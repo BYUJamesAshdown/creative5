@@ -1,7 +1,7 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
   background-color: snow;
-  padding-top: 4rem;
+  padding-top: 5em;
   /*
   padding-left: 250px;
   padding-right: 250px;
@@ -9,8 +9,7 @@ body {
 }
 
 .intro {
-  line-height: 3em;
-  height: 3em;
+  height: 4em;
   background-color: white;
   border-bottom: 1px solid #EEEEEE;
 }

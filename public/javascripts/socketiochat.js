@@ -21,15 +21,18 @@ angular.module('socketiochat', [])
           $('#usernameModal').modal('hide');
           active = true;
           get();
-        } else {
-          alert('Please enter at least one character for a username');
+        }
+        else {
+          alert('Please enter a username');
         }
       };
 
       let get = function() {
-        $http.get('/messages').success(function(data) {
-          angular.copy(data, $scope.messages);
-        });
+        if (active) {
+          $http.get('/messages').success(function(data) {
+            angular.copy(data, $scope.messages);
+          });
+        }
       };
 
       $scope.send = function() {
@@ -46,31 +49,9 @@ angular.module('socketiochat', [])
       };
 
       socket.on('message', function(msg) {
-        if (active) {
-          get();
-          window.scrollTo(0, document.body.scrollHeight);
-        }
+        get();
+        window.scrollTo(0, document.body.scrollHeight);
       });
 
     }
   ]);
-
-/*
-$(document).ready(function() {
-  var socket = io();
-
-  $('form').submit(function() {
-    socket.emit('chat message', $('#m').val());
-    $('#m').val('');
-    return false;
-  });
-
-  socket.on('chat message', function(msg) {
-    $('#messages').append($('<li>').text(msg));
-    window.scrollTo(0, document.body.scrollHeight);
-  });
-});
-*/
-$(document).ready(function() {
-
-});
