@@ -1,19 +1,18 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
   background-color: snow;
+  padding-top: 4rem;
+  /*
   padding-left: 250px;
   padding-right: 250px;
+*/
 }
 
 .intro {
-  text-align: center;
-}
-
-.chatbox {
+  line-height: 3em;
+  height: 3em;
   background-color: white;
-  margin-left: 200px;
-  margin-right: 200px;
-  border: 1px solid black;
+  border-bottom: 1px solid #EEEEEE;
 }
 
 .message {

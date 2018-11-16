@@ -1,4 +1,4 @@
-/* global angular io */
+/* global $ angular io */
 var socket = io();
 
 angular.module('bladecraft', [])
@@ -6,17 +6,37 @@ angular.module('bladecraft', [])
     '$scope', '$http',
     function($scope, $http) {
       $scope.messages = [];
+      let active = false;
 
-      $http.get('/messages').success(function(data) {
-        console.log('get success');
-        angular.copy(data, $scope.messages);
+      $scope.username = '';
+
+      $('#usernameModal').modal({ backdrop: 'static', keyboard: false });
+
+      $('#usernameModal').on('shown.bs.modal', function() {
+        $('#username').focus();
       });
 
+      $scope.submitUsername = function() {
+        if ($scope.username) {
+          $('#usernameModal').modal('hide');
+          active = true;
+          get();
+        } else {
+          alert('Please enter at least one character for a username');
+        }
+      };
+
+      let get = function() {
+        $http.get('/messages').success(function(data) {
+          angular.copy(data, $scope.messages);
+        });
+      };
+
       $scope.send = function() {
-        var message = $scope.message;
-        if (message) {
-          $http.post('/messages', { message: `${message}` }).success(function(data) {
-            console.log('post success');
+        let username = $scope.username;
+        let message = $scope.message;
+        if (username && message) {
+          $http.post('/messages', { username: `${username}`, message: `${message}` }).success(function(data) {
             $scope.messages.push(data);
           });
           socket.emit('message', $scope.message);
@@ -26,12 +46,10 @@ angular.module('bladecraft', [])
       };
 
       socket.on('message', function(msg) {
-        console.log('socket response');
-        $http.get('/messages').success(function(data) {
-          console.log('get success');
-          angular.copy(data, $scope.messages);
-        });
-        window.scrollTo(0, document.body.scrollHeight);
+        if (active) {
+          get();
+          window.scrollTo(0, document.body.scrollHeight);
+        }
       });
 
     }
@@ -53,3 +71,6 @@ $(document).ready(function() {
   });
 });
 */
+$(document).ready(function() {
+
+});
