@@ -7,13 +7,13 @@
 <script src='https://code.angularjs.org/1.2.32/angular.min.js'></script>
 <script src='https://code.jquery.com/jquery-3.3.1.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js'></script>
-<script src='javascripts/bladecraft.js'></script>
+<script src='javascripts/socketiochat.js'></script>
 
 <div class="intro fixed-top">
 	<h1>Chatroom.io</h1>
 </div>
 
-<div class='container' ng-app='bladecraft' ng-controller='MainCtrl'>
+<div class='container' ng-app='socketiochat' ng-controller='MainCtrl'>
 	<div class='message' ng-repeat='message in messages'>
 		<b>{{message.username}}:</b> {{message.message}}
 	</div>

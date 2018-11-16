@@ -1,7 +1,7 @@
 /* global $ angular io */
 var socket = io();
 
-angular.module('bladecraft', [])
+angular.module('socketiochat', [])
   .controller('MainCtrl', [
     '$scope', '$http',
     function($scope, $http) {
