@@ -1,19 +1,27 @@
 <!doctype html>
 <title>Socket.IO chat</title>
 
-<link rel='stylesheet' href='stylesheets/style.css'>
-<script src='/socket.io/socket.io.js'></script>
-<script src='https://code.angularjs.org/1.2.32/angular.min.js'></script>
-<script src='https://code.jquery.com/jquery-3.3.1.js'></script>
-<script src='javascripts/bladecraft.js'></script>
+<head>
+	<link rel='stylesheet' href='stylesheets/style.css'>
+	<script src='/socket.io/socket.io.js'></script>
+	<script src='https://code.angularjs.org/1.2.32/angular.min.js'></script>
+	<script src='https://code.jquery.com/jquery-3.3.1.js'></script>
+	<script src='javascripts/bladecraft.js'></script>
+</head>
 
-<div ng-app='bladecraft' ng-controller='MainCtrl'>
-	<div ng-repeat='message in messages'>
-		{{message.message}}
+<body>
+	<div class="intro">
+		<h1><u>Anonymous Chatbox</u></h1>
+		<p><em>Insert whatever you like, anytime you want! This is a simple chatbox where you can say anything you like anonymously, from any computer. The message will stay on the chatbox <b>forever</b>, so be careful what you say. Have fun!</b></em></p>
 	</div>
-	<ul id='messages'></ul>
-
+	<hr>
+	<div class="chatbox" ng-app='bladecraft' ng-controller='MainCtrl'>
+		<div class="message" ng-repeat='message in messages'>
+			{{message.message}}
+		</div>
+		<ul id='messages'></ul>
+	</div>
 	<form class='prompt' ng-submit='send()'>
-		<input class='form-control' placeholder='&lt;user&gt; &lt;attack&gt;' ng-model='message' />
+		<input class='form-control' placeholder='type message' ng-model='message' />
 	</form>
-</div>
+</body>

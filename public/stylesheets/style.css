@@ -1,5 +1,29 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: snow;
+  padding-left: 250px;
+  padding-right: 250px;
+}
+
+.intro {
+  text-align: center;
+}
+
+.chatbox {
+  background-color: white;
+  margin-left: 200px;
+  margin-right: 200px;
+  border: 1px solid black;
+}
+
+.message {
+  border-bottom: 1px solid #EEEEEE;
+}
+
 .prompt {
   width: 100%;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
+  margin: 15px;
+  margin-left: 200px;
 }
