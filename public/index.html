@@ -1,0 +1,19 @@
+<!doctype html>
+<title>Socket.IO chat</title>
+
+<link rel='stylesheet' href='stylesheets/style.css'>
+<script src='/socket.io/socket.io.js'></script>
+<script src='https://code.angularjs.org/1.2.32/angular.min.js'></script>
+<script src='https://code.jquery.com/jquery-3.3.1.js'></script>
+<script src='javascripts/bladecraft.js'></script>
+
+<div ng-app='bladecraft' ng-controller='MainCtrl'>
+	<div ng-repeat='message in messages'>
+		{{message.message}}
+	</div>
+	<ul id='messages'></ul>
+
+	<form class='prompt' ng-submit='send()'>
+		<input class='form-control' placeholder='&lt;user&gt; &lt;attack&gt;' ng-model='message' />
+	</form>
+</div>
